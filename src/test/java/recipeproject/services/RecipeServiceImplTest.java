@@ -4,6 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import recipeproject.converters.RecipeCommandToRecipe;
+import recipeproject.converters.RecipeToRecipeCommand;
 import recipeproject.domain.Recipe;
 import recipeproject.repositories.RecipeRepository;
 
@@ -22,10 +24,18 @@ public class RecipeServiceImplTest {
     @Mock
     RecipeRepository recipeRepository;
 
+
+    @Mock
+    RecipeToRecipeCommand recipeToRecipeCommand;
+
+    @Mock
+    RecipeCommandToRecipe recipeCommandToRecipe;
+
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        recipeService = new RecipeServiceImpl(recipeRepository);
+
+        recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
 
     @Test
