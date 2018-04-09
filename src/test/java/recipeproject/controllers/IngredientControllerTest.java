@@ -41,7 +41,7 @@ public class IngredientControllerTest {
 
         mockMvc.perform(get("/recipe/1/ingredients"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("/recipe/ingredient/list"))
+                .andExpect(view().name("recipe/ingredient/list"))
                 .andExpect(model().attributeExists("recipe"));
 
         verify(recipeService, times(1)).findRecipeCommandById(anyLong());
